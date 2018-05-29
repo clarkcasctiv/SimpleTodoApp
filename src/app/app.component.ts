@@ -6,5 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  todoArray = [];
+
+  addTodo(value) {
+    this.todoArray.push(value);
+    console.log(value);
+  }
+
+  deleteTodo(todo) {
+    for (let i = 0; i <= this.todoArray.length; i++) {
+      if (todo === this.todoArray[i]) {
+        this.todoArray.splice(i, 1);
+      }
+    }
+  }
+
+  todoSubmit(value: any) {
+    if (value !== '') {
+      this.todoArray.push(value.todo);
+      // this.todoForm.reset()
+    } else {
+      alert('Required Field **');
+    }
+  }
 }
